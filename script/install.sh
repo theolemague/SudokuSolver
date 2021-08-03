@@ -1,1 +1,0 @@
-echo $PATH:$HOME/Documents/PIT/SUDOKU/PIT_sudoku_LeMagueresse_Theo/src/ >> ~/.bashrc

@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
 
 import sys
-from grid import SudokuGrid
+import random
+from models.grid import SudokuGrid
 
 class PlaySudoku():
 
-    def __init__(self):        
-        try : 
-            self.grid = SudokuGrid.from_file(sys.argv[1], int(sys.argv[2]))
-        except IndexError:
-            self.grid = SudokuGrid.from_stdin()
+    def __init__(self, grid):
+        self.grid = grid
         self.initial_grid = self.grid.copy()
 
     def getValues(self):
-        print(self.grid)    
+        print(self.grid)  
         i, j, v = input("Entrez la position de la case (de 0 à 8) à modifier puis la valeur a mettre (ligne colonne valeur)\n").split()
         self.checkValues(i, j, v)
         
@@ -51,13 +49,17 @@ class PlaySudoku():
         return True
 
 
-def main():
-    play = PlaySudoku()
+def play(data):
+    with open(data) as grids : 
+        for i, _ in enumerate(grids):
+            pass
+        grids.seek(0)
+        grid = grids.readlines()[random.randint(0, i)].replace('\n','')
+
+    g = SudokuGrid(grid)
+    play = PlaySudoku(g)
     Finished = False
     while not Finished:
         play.getValues()
         Finished = play.checkFinish()
     print("Felicitation, sudoku fini !")
-        
-if __name__ == "__main__":
-    main()
