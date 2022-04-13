@@ -19,9 +19,9 @@ The sudoku solver is a Python project realized in the context of an introduction
 The file `start.py` is the launcher of the interactive command line. `models/` contains all the classes and functions that are used to solve the sudokus. `tests/` contains the tests given to check our implementation. `sudokus.txt` is a text file that contains the sudokus in the format used: line of 81 (9x9) numbers where each 9 characters starts a new line and 0 means an empty cell.
 ## Install
 ```zsh
-$ git clone https://github.com/theolemague/
+$ git clone https://github.com/theolemague/SodukuSolver
 ...
-$ cd Soduku Solver
+$ cd SodukuSolver
 ```
 ## Run
 If you want to start the interactive command line you can just call play.py :
