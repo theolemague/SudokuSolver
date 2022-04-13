@@ -5,35 +5,35 @@ from models.solver import SudokuSolver
 import time
 import multiprocessing
     
-def solve_all(running_times, file):
+def solve_all(running_times, result, file):
     with open(file) as grids : 
         for i,grid in enumerate(grids):
-            g = SudokuGrid(grid.replace('\n',''))
+            g = SudokuGrid(grid.replace("\n",""))
             start = time.monotonic()
             solver = SudokuSolver(g)
-            solver.solve()
+            result.append(solver.solve())
             running_times.append(1000*(time.monotonic() - start))
-            print("\r[{: <40}] ({:.0%})".format('='*int(40*i/244), i/244), end='')
+            print("\r[{: <40}] ({:.0%})".format("="*int(40*i/244), i/244), end="")
 
 
-def solve(data):
-
-    if len(data) == 81 : 
+def solve(data, typeSource):
+    if typeSource == "sudoku" : 
         try :
             g = SudokuGrid(data)
             start = time.monotonic()
             solver = SudokuSolver(g)
             solved = solver.solve()
             print(solved)
-            print('Soduku solved in {:.3f}ms'.format(1000*(time.monotonic() - start)))
+            print("Soduku solved in {:.3f}ms".format(1000*(time.monotonic() - start)))
             
         except : 
-            print('Wrong data')
+            print("Wrong data source")
     else :
         manager = multiprocessing.Manager()
         running_times = manager.list()
-        p = multiprocessing.Process(target=solve_all, args=(running_times, data))
-        print("Starting solver on all 244 instances in 'sudoku_db.txt' with a time-out of 5min...")
+        results = manager.list()
+        p = multiprocessing.Process(target=solve_all, args=(running_times, results, data))
+        print("Starting solver on {} with a time-out of 2min...".format(data))
         p.start()
         p.join(120)
 
@@ -45,6 +45,12 @@ def solve(data):
             print()
 
         n_runs = len(running_times)
+        result_fname = (data.rsplit(".")[0]+"_solved.txt")
+        with open(result_fname, "w+") as r :
+            for s in results :
+                r.write(str(s) + "\n\n")
+
         print("Number of completed run: {}".format(n_runs))
         print("Running times statistics: min = {:.3f}ms, average = {:.3f}ms, max = {:.3f}ms".format(
             min(running_times), sum(running_times) / n_runs, max(running_times)))
+        print("Results are stored in : {}".format(result_fname))
