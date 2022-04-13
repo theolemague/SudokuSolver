@@ -1,4 +1,4 @@
-# Sodoku Solver
+# Sudoku Solver
 The sudoku solver is a Python project realized in the context of an introduction to programming course at INSA Lyon in 3rd year. The project consists in creating a sudoku solver. The skeleton of the project (only the signatures of the classes and functions) was given and we had to fill it. The solver uses a recursive technique.
 
 # Development
@@ -19,9 +19,9 @@ The sudoku solver is a Python project realized in the context of an introduction
 The file `start.py` is the launcher of the interactive command line. `models/` contains all the classes and functions that are used to solve the sudokus. `tests/` contains the tests given to check our implementation. `sudokus.txt` is a text file that contains the sudokus in the format used: line of 81 (9x9) numbers where each 9 characters starts a new line and 0 means an empty cell.
 ## Install
 ```zsh
-$ git clone https://github.com/theolemague/SodukuSolver
+$ git clone https://github.com/theolemague/SudokuSolver
 ...
-$ cd SodukuSolver
+$ cd SudokuSolver
 ```
 ## Run
 If you want to start the interactive command line you can just call play.py :
