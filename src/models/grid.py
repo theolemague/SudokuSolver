@@ -44,22 +44,17 @@ class SudokuGrid:
         return grid_string
 
     def get_row(self, i):
-        for val in self.initial_grid[i]:
-            yield val
         """
         Cette méthode extrait une ligne donnée de la grille de Sudoku.
         *Variante avancée: Renvoyez un générateur sur les valeurs au lieu d'une liste*
         :param i: Numéro de la ligne à extraire, entre 0 et 8
         :type i: int
         :return: La liste des valeurs présentes à la ligne donnée
-        :rtype: list of int
+        :rtype: set of int
         """
+        return self.initial_grid[i]
 
     def get_col(self, j):
-        col = []
-        for i in range(9):
-            col.append(self.initial_grid[i][j])
-            yield self.initial_grid[i][j]
         """
         Cette méthode extrait une colonne donnée de la grille de Sudoku.
         *Variante avancée: Renvoyez un générateur sur les valeurs au lieu d'une liste*
@@ -68,11 +63,12 @@ class SudokuGrid:
         :return: La liste des valeurs présentes à la colonne donnée
         :rtype: list of int
         """
+        col = []
+        for i in range(9):
+            col.append(self.initial_grid[i][j])
+        return col
 
     def get_region(self, reg_row, reg_col):
-        for i in range(reg_row*3, (reg_row*3)+3):
-            for j in range(reg_col*3, (reg_col*3)+3):
-                yield self.initial_grid[i][j]
         """
         Cette méthode extrait les valeurs présentes dans une région donnée de la grille de Sudoku.
         *Variante avancée: Renvoyez un générateur sur les valeurs au lieu d'une liste*
@@ -83,6 +79,11 @@ class SudokuGrid:
         :return: La liste des valeurs présentes à la colonne donnée
         :rtype: list of int
         """
+        region = []
+        for i in range(reg_row*3, (reg_row*3)+3):
+            for j in range(reg_col*3, (reg_col*3)+3):
+                region.append(self.initial_grid[i][j])
+        return region
 
     def get_empty_pos(self):
         """
