@@ -24,7 +24,7 @@ $ git clone https://github.com/theolemague/SudokuSolver.git
 $ cd SudokuSolver
 ```
 ## Run
-If you want to start the interactive command line you can just call play.py :
+To launch the interactive command line, you can simply call `play.py` with your version of Python (my version : Python 3.9.10)
 ```zsh
 $ python3 src/play.py
 Welcome to the soduku player
@@ -32,7 +32,7 @@ Select a game mode : 'play' or 'solve' (q to exit)
 > 
 ...
 ```
-The interactive command line offer 2 possibilities : play sudoku or solve sudoku(s).
+The interactive command line offers two possibilities: play the sudoku or solve the sudoku(s).
 ### Play sudoku
 In game mode, you can play sudoku. You can either choose to import sudokus by adding a file, or enter directly the 81 numbers of the sudoku.
 ```zsh
