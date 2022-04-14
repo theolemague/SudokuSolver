@@ -19,7 +19,10 @@ def solve_all(running_times, result, file):
 def solve(data, typeSource):
     if typeSource == "sudoku" : 
         try :
+
             g = SudokuGrid(data)
+            print("Given grid is")
+            print(g)
             start = time.monotonic()
             solver = SudokuSolver(g)
             solved = solver.solve()

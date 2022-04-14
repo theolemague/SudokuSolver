@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
 import random
 from models.grid import SudokuGrid
 
@@ -13,7 +12,6 @@ class PlaySudoku():
     def getValues(self):
         print(self.grid)  
         res = input("Enter the positions x (row) and y (column) (from 1 to 9) of the cell and the value v (from 1 to 9) following the format: xyv (q to exit)\n> ")
-        print(res)
         if "q" in res :
             return 0
         if " " in res :
@@ -28,8 +26,7 @@ class PlaySudoku():
                 self.checkValues(int(res[0])-1, int(res[1])-1, int(res[2]))
             except ValueError :
                 print("Value given in the wrong format: should be numbers from 1 to 9")
-
-        
+  
     def checkValues(self, i, j, v):
         impossible_val =[]
         try :
@@ -62,7 +59,6 @@ class PlaySudoku():
             if 0 in self.grid.get_col(i):
                 return False
         return True
-
 
 def play(source, typeSource):
     grid = ""

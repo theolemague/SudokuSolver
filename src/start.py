@@ -5,11 +5,8 @@ sys.path.append(os.path.abspath('.')+'/src')
 from models.play import play
 from models.solve import solve
 
-
 def checkSource(data):
-    print(len(data))
     if len(data) == 81 :
-        print("check numbers")
         try :
             for c in data :
                 int(c)
@@ -21,9 +18,6 @@ def checkSource(data):
     else :
         print("File not found or sudoku do not contains 81 numbers")
     return False
-    
-
-
 
 def start(mode):
     source = ""
